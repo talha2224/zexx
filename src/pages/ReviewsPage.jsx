@@ -1,11 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { FaUser, FaYoutube } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 import Footer from '../components/Footer'
 import { SlGraph } from 'react-icons/sl'
+import { GiHamburgerMenu } from 'react-icons/gi'
 
 
 const ReviewsPage = () => {
+    const [showNav, setshowNav] = useState(false)
+
     return (
         <div>
 
@@ -16,10 +19,10 @@ const ReviewsPage = () => {
                 </div>
 
                 <div className='hidden lg:flex items-center gap-x-3 text-lg'>
-                        <Link to={"/roadmap"}>Roadmap</Link>
-                        <Link to={"/join"}>Whitepaper</Link>
-                        <Link to={"/reviews"}>Zexxcoin</Link>
-                        <Link to={"/docs"}>Docs</Link>
+                    <Link to={"/roadmap"}>Roadmap</Link>
+                    <Link to={"/join"}>Whitepaper</Link>
+                    <Link to={"/reviews"}>Zexxcoin</Link>
+                    <Link to={"/docs"}>Docs</Link>
                 </div>
 
                 <div className='hidden lg:flex items-center gap-x-4'>
@@ -28,6 +31,20 @@ const ReviewsPage = () => {
                     </div>
 
                     <button className='bg-[#7064E9] cursor-pointer px-3 py-2 rounded-md'>Connect Wallet</button>
+                </div>
+
+                <div className=' relative lg:hidden block'>
+                    <GiHamburgerMenu onClick={() => setshowNav(!showNav)} className='text-xl' />
+                    {
+                        showNav && (
+                            <div className=' absolute bg-black p-5 right-0 top-4 mt-5 rounded-md'>
+                                <Link className=' block mt-2' to={"/roadmap"}>Roadmap</Link>
+                                <Link className=' block mt-2' to={"/join"}>Whitepaper</Link>
+                                <Link className=' block mt-2' to={"/reviews"}>Zexxcoin</Link>
+                                <Link className=' block mt-2' to={"/docs"}>Docs</Link>
+                            </div>
+                        )
+                    }
                 </div>
 
             </div>
@@ -42,10 +59,10 @@ const ReviewsPage = () => {
                 <p className='text-center text-[#FFFBFB80]'>Discover insights from the crypto community with our curated page featuring all YouTube video reviews of Zexxcoin. <br />Explore expert analyses, presale highlights, and in-depth breakdowns of our innovative blockchain technology.</p>
                 <div className='flex justify-center items-center flex-wrap mt-10 md:w-[50%]'>
                     {
-                        [1, 2, 3, 4, 5, 6.7,8,8,10,11,12,13,14,15,16,17,18,19]?.map((i) => (
+                        [1, 2, 3, 4, 5, 6.7, 8, 8, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]?.map((i) => (
 
                             <div key={i} className='bg-[#FFFBFB] min-w-[15rem] max-w-[15rem] h-[7rem] mt-2 rounded-md p-4 mr-3 flex justify-center items-center flex-col'>
-                                <FaYoutube className='text-[2rem] text-[#EF4E47]'  />
+                                <FaYoutube className='text-[2rem] text-[#EF4E47]' />
                             </div>
 
                         ))

@@ -12,12 +12,14 @@ import { SlGraph } from "react-icons/sl";
 import { BsWindowDesktop } from "react-icons/bs";
 import { MdAccountCircle } from "react-icons/md";
 import { GoAlert, GoArrowSwitch } from "react-icons/go";
-import { AiOutlineDown, AiOutlineUp } from 'react-icons/ai'; // Import icons for open/close
 import Footer from '../components/Footer'
+import { GiHamburgerMenu } from "react-icons/gi";
 
 const HomePage = () => {
 
     const [openQuestion, setOpenQuestion] = useState(null);
+    const [showNav, setshowNav] = useState(false)
+
     const faqs = [
         {
             question: "What is Zexxcoin",
@@ -78,6 +80,20 @@ const HomePage = () => {
                         </div>
 
                         <button className='bg-[#7064E9] cursor-pointer px-3 py-2 rounded-md'>Connect Wallet</button>
+                    </div>
+
+                    <div className=' relative lg:hidden block'>
+                        <GiHamburgerMenu onClick={() => setshowNav(!showNav)} className='text-xl' />
+                        {
+                            showNav && (
+                                <div className=' absolute bg-black p-5 right-0 top-4 mt-5 rounded-md'>
+                                    <Link className=' block mt-2' to={"/roadmap"}>Roadmap</Link>
+                                    <Link className=' block mt-2' to={"/join"}>Whitepaper</Link>
+                                    <Link className=' block mt-2' to={"/reviews"}>Zexxcoin</Link>
+                                    <Link className=' block mt-2' to={"/docs"}>Docs</Link>
+                                </div>
+                            )
+                        }
                     </div>
 
                 </div>
@@ -290,7 +306,7 @@ const HomePage = () => {
                                     {openQuestion === index ? (
                                         <FaAngleUp className='text-xl' />
                                     ) : (
-                                        <FaAngleDown  className='text-xl' />
+                                        <FaAngleDown className='text-xl' />
                                     )}
                                 </div>
                                 {openQuestion === index && (
@@ -306,7 +322,7 @@ const HomePage = () => {
 
             </div>
 
-            <Footer/>
+            <Footer />
 
 
 

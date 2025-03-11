@@ -1,9 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { FaUser } from 'react-icons/fa'
+import { GiHamburgerMenu } from 'react-icons/gi'
 import { MdNavigateNext } from 'react-icons/md'
 import { Link } from 'react-router-dom'
 
 const DocsPage = () => {
+    const [showNav, setshowNav] = useState(false)
+
     return (
         <div>
 
@@ -31,6 +34,24 @@ const DocsPage = () => {
 
                     <button className='bg-[#7064E9] cursor-pointer px-3 py-2 rounded-md'>Connect Wallet</button>
 
+                </div>
+
+                <div className=' relative lg:hidden block'>
+                    <GiHamburgerMenu onClick={() => setshowNav(!showNav)} className='text-xl' />
+                    {
+                        showNav && (
+                            <div className=' absolute bg-black p-5 right-0 top-4 mt-5 rounded-md'>
+                                <Link className=' block mt-2' to={"/roadmap"}>Roadmap</Link>
+                                <Link className=' block mt-2' to={"/join"}>Whitepaper</Link>
+                                <Link className=' block mt-2' to={"/reviews"}>Zexxcoin</Link>
+                                <Link className=' block mt-2' to={"/docs"}>Docs</Link>
+                                <Link to={"/notfound"} className='mt-2'>
+                                    <button className='bg-[#7064E9] cursor-pointer px-3 py-2 rounded-md'>Contact</button>
+                                </Link>
+
+                            </div>
+                        )
+                    }
                 </div>
 
             </div>
